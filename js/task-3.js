@@ -1,17 +1,40 @@
 
-function filterArray(numbers, value) {
-    let newMas = [];
-    for (let index = 0; index < numbers.length; index++) {
-        if (numbers[index] > value) {
-        newMas.push(numbers[index]);
-    }     
-    }
-    return newMas;
+const profile = {
+    username: "Jacob",
+    playTime: 300,
 
-}
+    changeUsername(newName) {
+        this.username = newName;
+        
+    },
 
-console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
-console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
-console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
-console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
-console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
+    updatePlayTime(hours) {
+        if (typeof hours !== "number") {
+            console.log("Your value is not a number.")
+            return;
+        }
+        this.playTime += hours;
+
+    },
+
+    getInfo() {
+        return `${this.username} has ${this.playTime} active hours!`
+    },
+
+
+};
+
+
+
+
+
+
+
+
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+
+profile.changeUsername("Marco");
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime("dsd");
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
